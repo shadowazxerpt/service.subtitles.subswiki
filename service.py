@@ -106,12 +106,28 @@ def get_url(url):
         content = response.read()                
     except Exception:
         log(u"Failed to fetch %s" % url, level=LOGWARNING)
-        ucontent = None    
+        ucontent = None
+            
     ucontent = unicode(content, 'utf-8')
     h = HTMLParser.HTMLParser()
-    ucontent = h.unescape(ucontent)    
+    ucontent = h.unescape(ucontent)
+            
     return ucontent
 
+def download_url(url):
+    class MyOpener(FancyURLopener):
+        #version = HTTP_USER_AGENT
+        version = ''
+    my_urlopener = MyOpener()
+    log(u"Fetching %s" % url)
+    try:
+        response = my_urlopener.open(url)        
+        content = response.read()                
+    except Exception:
+        log(u"Failed to fetch %s" % url, level=LOGWARNING)
+        content = None
+            
+    return content
 
 def _downloads2rating(downloads):
     rating = downloads / 1000
@@ -413,7 +429,7 @@ def Download(download_id, workdir):
     subtitles_list = []
     # Get the page with the subtitle link,
     subtitle_detail_url = MAIN_SUBWIKI_URL + download_id
-    download_content = get_url(subtitle_detail_url)
+    download_content = download_url(subtitle_detail_url)
     if download_content is None:
         log(u"Expected content not found in selected subtitle detail page",
                 level=LOGFATAL)
