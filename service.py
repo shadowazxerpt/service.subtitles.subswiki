@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# Subdivx.com subtitles, based on a mod of Undertext subtitles
-# Adaptation: enric_godes@hotmail.com | Please use email address for your
+# Subswiki.com subtitles, based on a mod of Subdivx subtitles
+# Adaptation: felexx@hotmail.com
 # comments
-# Port to XBMC 13 Gotham subtitles infrastructure: cramm, Mar 2014
+# Port to XBMC 13 Gotham subtitles infrastructure: felexx90, Sept 2015
 
 from __future__ import print_function
 from json import loads
@@ -135,10 +135,8 @@ def get_all_subs(searchstring, languages, file_orig_path, istvshow):
             url_id = groups['url_id']
             log(u'%s'%(url_id))
             if istvshow and 'film' in url_id:
-                log(u'Entro')
                 continue
             if not istvshow and 'serie' in url_id:
-                log(u'Entro1')
                 continue
             descr = groups['text']            
             descr = descr.strip()
@@ -414,7 +412,6 @@ def Download(download_id, workdir):
     """Called when subtitle download is requested from XBMC."""
     subtitles_list = []
     # Get the page with the subtitle link,
-    # i.e. http://www.subdivx.com/X6XMjE2NDM1X-iron-man-2-2010
     subtitle_detail_url = MAIN_SUBWIKI_URL + download_id
     download_content = get_url(subtitle_detail_url)
     if download_content is None:
