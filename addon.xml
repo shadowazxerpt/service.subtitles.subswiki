@@ -10,7 +10,7 @@
              library="service.py" />
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Subwiki.com</summary>
-    <description lang="en">Search and download subtitles from Subwiki.com</description>
+    <description lang="en">Search and download subtitles from Subswiki.com</description>
     <disclaimer lang="en"></disclaimer>
     <language>es en</language>
     <platform>all</platform>
@@ -18,6 +18,6 @@
     <forum>http://forum.xbmc.org/forumdisplay.php?fid=143</forum>
     <website></website>
     <email></email>
-    <source>https://github.com/felexx90/service.subtitles.subwiki</source>
+    <source>https://github.com/felexx90/service.subtitles.subswiki</source>
   </extension>
 </addon>
